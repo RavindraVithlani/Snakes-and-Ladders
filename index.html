@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Snakes and Ladders</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="intro" >
+    <div id="landing">
+        <img src="intro.png" width="300px">
+        <h1>Snakes and Ladders</h1>
+        <button onclick="enter();" id="but1">Click to Begin</button>
+    </div>
+    
+
+    <div id="details" style="display: none;">
+        <div>
+            <h3>Number of Players: </h3>
+            <select onchange="playersCount();" class="input" id="dropdown">
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        <div id="inputs" >
+            <input type="text" class="input" placeholder="Enter your name: " style="display:none;" value="Player 1">
+            <input type="text" class="input" placeholder="Enter your name: " style="display:none;" value="Player 2">
+            <input type="text" class="input" placeholder="Enter your name: " style="display:none;" value="Player 3">
+            <input type="text" class="input" placeholder="Enter your name: " style="display:none;" value="Player 4">
+            <button onclick="strt()"  class="input">Start Game</button>
+        </div>
+        
+    
+    </div>
+</div>
+
+
+<div id="mainDiv" style="display: none;">
+    <div id="nav">
+        <div>
+            <img src="main.png" alt="" id="titleImg">
+            <div id="title">
+                <p>Snakes and</p>
+                <p>Ladders</p>
+            </div>
+            
+        </div>
+        <div id="buttons">
+                <h4 class="navButton" onclick="location.reload()">New Game</h4>
+                <h4 class="navButton" onclick="reset();">Reset</h4>
+                <h4 class="navButton" onclick="location.reload()">Home</h4>
+        </div>
+        <div class="ladder" style="transform: rotate(45deg);top: -5%;left: 5%">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div>
+        <div class="ladder" style="top: -5%;right: 5%;transform: rotate(-45deg);">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div><div class="ladder" style="bottom: -5%;left: 4%;transform: rotate(-45deg);">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div><div class="ladder" style="    bottom: -5%;right: 5%;transform: rotate(45deg);">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div>
+    </div>
+
+    <!-- sidebar -->
+
+
+    <div id="sidebar">    
+        <div id="names">
+            <div class="names" style="display: none;"><h3>1.<span id="name0"></span></h3><h2 class="col" style="color: blue;">&#9679;</h2></div>
+            <div class="names" style="background-color: #c1e6f5;display: none;"><h3>2.<span id="name1"></span></h3><h2 class="col" style="color: maroon;;">&#9679;</h2></div>
+            <div class="names" style="display: none;"><h3>3.<span id="name2"></span></h3><h2 class="col" style="color: red;">&#9679;</h2></div>
+            <div class="names" style="background-color: #c1e6f5;display: none;"><h3>4.<span id="name3"></span></h3><h2 class="col" style="color: green;">&#9679;</h2></div>
+        </div>
+
+
+        
+        
+
+        <!-- Dice -->
+
+        <p id="placeholder" style="font-size: 50pt;font-weight: bold;padding: 11px;box-sizing: border-box;"></p>
+        <button id="button" onclick="roll();">Roll Dice</button>
+        
+        <!-- //Dice -->
+
+        <!-- Initial pawns -->
+        <div id="startBox">
+            <h3 id="p0" class="pawn" style="color: blue;display: none;">&#9823;</h3>
+            <h3 id="p1" class="pawn" style="color:maroon;display:none;">&#9823;</h3>
+            <h3 id="p2" class="pawn" style="color:red;display:none;">&#9823;</h3>
+            <h3 id="p3" class="pawn" style="color: green;display:none;">&#9823;</h3>
+        </div>
+        <!-- //Initial pawns -->
+
+    </div>
+
+    <!-- //sidebar -->
+        
+
+    <div id="grid">
+        <div class="ladder" id="l1">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div>
+        <div class="ladder" id="l2">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div>
+        <div class="ladder" id="l3">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+
+        </div>
+        <div class="ladder" id="l4">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            
+        </div>
+        <div class="ladder" id="l5">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            
+        </div>
+        <div class="ladder" id="l6">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            
+        </div>
+        <div class="ladder" id="l7">
+            <div class="step" style="border: none;"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+
+            
+            
+        </div>
+        <img src="sn1.png" id="s1" class="snake"> 
+        <img src="sn2.png" id="s2" class="snake">
+        <img src="sn3.png" id="s3" class="snake">
+        <img src="sn4.png" id="s4" class="snake">
+        <img src="sn5.png" id="s5" class="snake">
+        <img src="sn6.png" id="s6" class="snake">
+    </div>
+    
+</div>
+    
+    
+</body>
+
+<script src="Javascript.js"></script>
+</html>
+
+<!-- TO DO
+    add alignment to individual box for multiple pawns ****
+    
+    add moveUp and moveDown functions @last
+    add finish and winner message 
+    add functions to nav buttons
+    add Start page to take input of name
+    add a Dice
+-->
